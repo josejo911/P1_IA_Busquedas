@@ -1,8 +1,7 @@
 '''
-Proyecto #1 Inteligencia Artificial
-Busqueda utilizando algoritmos como A*
+    Proyecto # 1 Inteligencia Artificial
+    Busqueda utilizando algoritmos como A *
 '''
-
 import pprint
 pp = pprint.PrettyPrinter(indent=4)
 
@@ -29,6 +28,34 @@ def puzz_breadth_first(start,end):
         expanded_nodes += 1
         if endnode == end: break
     print "Expansion de  nodos:",expanded_nodes
+    print "Solucion:"
+    pp.pprint(path)
+
+def puzz_astar(start,end):
+    """
+    Definicion de Algoritmo A*
+    """
+    front = [[heuristic_2(start), start]] #optional: heuristic_1
+    expanded = []
+    expanded_nodes=0
+    while front:
+        i = 0
+        for j in range(1, len(front)):
+            if front[i][0] > front[j][0]:
+                i = j
+        path = front[i]
+        front = front[:i] + front[i+1:]
+        endnode = path[-1]
+        if endnode == end:
+            break
+        if endnode in expanded: continue
+        for k in moves(endnode):
+            if k in expanded: continue
+            newpath = [path[0] + heuristic_2(k) - heuristic_2(endnode)] + path[1:] + [k]
+            front.append(newpath)
+            expanded.append(endnode)
+        expanded_nodes += 1
+    print "Expansion de nodos:", expanded_nodes
     print "Solucion:"
     pp.pprint(path)
 
@@ -80,9 +107,20 @@ def heuristic_1(puzz):
             compare += 1
     return misplaced
 
+def heuristic_2(puzz):
+    """
+    Manhattan distance
+    """
+    distance = 0
+    m = eval(puzz)
+    for i in range(4):
+        for j in range(4):
+            if m[i][j] == 0: continue
+            distance += abs(i - (m[i][j]/4)) + abs(j -  (m[i][j]%4));
+    return distance
 
 if __name__ == '__main__':
     puzzle = str([[1, 2, 6, 3],[4, 9, 5, 7], [8, 13, 11, 15],[12, 14, 0, 10]])
     end = str([[0, 1, 2, 3],[4, 5, 6, 7], [8, 9, 10, 11],[12, 13, 14, 15]])
-    ##puzz_astar(puzzle,end)
-    ##puzz_breadth_first(puzzle,end)
+    puzz_astar(puzzle,end)
+    puzz_breadth_first(puzzle,end)
