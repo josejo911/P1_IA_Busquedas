@@ -95,3 +95,9 @@ if __name__ == '__main__':
     __INICIAL = str([[1, 8, 6, 3],[4, 9, 5, 12], [2, 13, 11, 15],[7, 14, 0, 10]])
     _FINAL = str([[0, 1, 2, 3],[4, 5, 6, 7], [8, 9, 10, 11],[12, 13, 14, 15]])
     ei_star(__INICIAL,_FINAL)
+
+'''
+Se tomo como referencia el video https://www.youtube.com/watch?v=GuCzYxHa7iA 
+y el codigo de github https://github.com/JaneHJY/8_puzzle 
+
+'''
