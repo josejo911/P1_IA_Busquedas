@@ -5,6 +5,12 @@
 import pprint
 pp = pprint.PrettyPrinter(indent=4)
 
+'''
+Se tomo como referencia el video https://www.youtube.com/watch?v=GuCzYxHa7iA 
+y el codigo de github https://github.com/JaneHJY/8_puzzle 
+
+'''
+
 def ei_star(__ASTART,__END):
     """
     Definicion de Algoritmo A*
@@ -92,12 +98,18 @@ def manhattan(puzz):
     return distancia_nodos
 
 if __name__ == '__main__':
-    __INICIAL = str([[1, 8, 6, 3],[4, 9, 5, 12], [2, 13, 11, 15],[7, 14, 0, 10]])
+
+   ## __INICIAL = str([[4, 3, 2, 1],[5, 14, 13, 12], [6, 15, 0, 11],[7, 8, 9, 10]])
+
+  ##  __INICIAL = str([[1, 2, 3, 4],[5, 6, 7, 8], [9, 10, 11, 12],[13, 15, 14, 0]])
+
+
+   ## __INICIAL = str([[10, 11, 12, 13],[9, 2, 3, 0], [14, 8, 1, 4],[15, 7, 6, 5]])
+
+
+    __INICIAL = str([[2, 4, 6, 8],[10, 12, 14, 0], [1, 3, 5, 7],[9,11,13, 15]])
+
+
     _FINAL = str([[0, 1, 2, 3],[4, 5, 6, 7], [8, 9, 10, 11],[12, 13, 14, 15]])
     ei_star(__INICIAL,_FINAL)
 
-'''
-Se tomo como referencia el video https://www.youtube.com/watch?v=GuCzYxHa7iA 
-y el codigo de github https://github.com/JaneHJY/8_puzzle 
-
-'''
